@@ -1,0 +1,76 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}Portafolio – Eduardo Rojas{% endblock %}
+
+{% block content %}
+
+<!-- SOBRE MÍ -->
+<section id="inicio" class="bg-light text-center scroll-anim">
+    <div class="container">
+        <img src="{% static 'img/avatar.png' %}" class="perfil-img rounded-circle mb-4 shadow" alt="Foto perfil">
+        <h1 class="mb-3">Hola, soy Eduardo 👋</h1>
+        <p class="lead">
+            Geólogo y programador en construcción creando herramientas digitales para exploración minera.
+            Me apasiona combinar ciencia y tecnología para desarrollar soluciones reales en terreno.
+        </p>
+    </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+    <div class="container">
+        <h2 class="text-center mb-4">Proyectos</h2>
+
+        {% for proyecto in proyectos %}
+        <div class="card p-3 shadow mb-4">
+            <img src="{{ proyecto.imagen.url }}" class="img-fluid rounded mb-3" alt="Imagen Proyecto">
+
+            <h4>{{ proyecto.titulo }}</h4>
+            <p>{{ proyecto.descripcion }}</p>
+            <p><strong>Tecnologías:</strong> {{ proyecto.tecnologia }}</p>
+
+            <a class="btn btn-dark" href="{{ proyecto.enlace }}" target="_blank">Ver en GitHub</a>
+        </div>
+
+        {% empty %}
+        <p class="text-center">No hay proyectos aún. Puedes agregar uno desde el menú.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- HABILIDADES -->
+<section id="habilidades" class="bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Habilidades</h2>
+
+        <h4>🔧 Técnicas</h4>
+        <ul>
+            <li>Python – Django – APIs</li>
+            <li>HTML, CSS, JavaScript, Bootstrap</li>
+            <li>MySQL, PostgreSQL</li>
+            <li>Gestión de datos geológicos</li>
+        </ul>
+
+        <h4 class="mt-4">🤝 Blandas</h4>
+        <ul>
+            <li>Pensamiento crítico</li>
+            <li>Comunicación efectiva</li>
+            <li>Trabajo en equipo</li>
+            <li>Gestión del tiempo</li>
+        </ul>
+    </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="text-center scroll-anim">
+    <div class="container">
+        <h2>Contacto</h2>
+        <p>📧 <a href="mailto:eduardo.rojas.uz@gmail.com">eduardo.rojas.uz@gmail.com</a></p>
+        <p>💼 <a href="https://www.linkedin.com/in/rojasuzcategui" target="_blank">linkedin.com/in/rojasuzcategui</a></p>
+        <p>💻 <a href="https://github.com/Edrojuz" target="_blank">github.com/Edrojuz</a></p>
+        <p>📍 Chile</p>
+    </div>
+</section>
+
+{% endblock %}
